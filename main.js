@@ -12,7 +12,7 @@ function CreateTable(significanceLevel, ...measurements/*samples*/) { //40.15 40
     var deviationsSum = 0;
     measurements.forEach(measurement => {
         var deviation = measurement - meanValue;
-        deviations.push(deviation);
+        deviations.push(floorAtIndex(deviation, 4));
         deviationsSum += deviation;
     });
 
@@ -43,9 +43,9 @@ function CreateTable(significanceLevel, ...measurements/*samples*/) { //40.15 40
     var table = "";
     table += "№" + "  │  " + "x, у.е." + "  │  " + "(x-〈x〉), у.е." + "  │  " + "(x-〈x〉)², у.е." + "\n";
     for (let i = 0; i < measurements.length; i++) {
-        table += i + " │ " + measurements[i] + " │ " +  deviations[i] + " │ " +  squaredDeviations[i].toFixed(deviations[i].toString().length - 1 - deviations[i].toString().indexOf(".")) + "\n";
+        table += i+1 + " │ " + measurements[i].toFixed(maxDecimalDigits(measurements)) + " │ " +  deviations[i].toFixed(maxDecimalDigits(deviations)) + " │ " +  squaredDeviations[i].toFixed(maxDecimalDigits(deviations)**2) + "\n";
     }
-    table += "Σ │ " + measurementsSum + " │ " + deviationsSum + " │ " + squaredDeviationsSum + "\n";
+    table += "Σ │ " + measurementsSum.toFixed(maxDecimalDigits(measurements)) + " │ " + deviationsSum.toFixed(maxDecimalDigits(deviations)) + " │ " + squaredDeviationsSum.toFixed(maxDecimalDigits(deviations)**2) + "\n";
     table += "〈x〉 │ " + meanValue + "\n"; // ̅
     console.log(table)
 
@@ -64,4 +64,16 @@ function updateTable() { //display, calculate, update
     });
     console.log(significanceLevel, measurements)
     document.getElementById("table").innerText = CreateTable(significanceLevel, ...measurements);
+}
+
+function floorAtIndex(n, i) {
+    return Math.floor(n * (10**i))/(10**i);
+}
+
+function maxDecimalDigits(arr){
+    max = 0;
+    arr.forEach((n) => {
+        max = Math.max(max, n.toString().length - 1 - n.toString().indexOf("."));
+    })
+    return max;
 }

@@ -36,7 +36,7 @@ function subt(n, p) {
                             + Math.log(n/n1/2/Math.PI) - 1
                             + (1/n1 - 1/n) / 6) / 2);
                     x += delta;
-                    round = delta.toFixed(Math.abs(integer(Math.log10(Math.abs(x))-4)));
+                    round = delta.toFixed(Math.abs((Math.log10(Math.abs(x))-4).toFixed(0)));
                 } while ((x) && (round != 0));
             }
             return x;
@@ -78,5 +78,5 @@ function _subtprob (n, x) {
         a = (n == 1) ? 0 : Math.sin(w)*Math.cos(w)/Math.PI;
         b= .5 + w/Math.PI;
     }
-    return max(0, 1 - b - a * y);
+    return Math.max(0, 1 - b - a * y);
 }
