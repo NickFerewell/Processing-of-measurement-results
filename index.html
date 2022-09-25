@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Обработка результатов измерений</title>
+
+    <link href="style.css" rel="stylesheet" type="text/css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.2.1/math.js" integrity="sha512-47N5yVdAeXJ+9qstVMTH2Z0EpX618sjYZcswRwhpldSTD0IbW6yQPtzg4RLrPp/2+TIgEF1elT68/ZBu82nqJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <script src="TValue.js"></script>
+    <script src="main.js"></script>
+</head>
+<body>
+    <input type="text" placeholder="измерения, разделённые пробелом" id="measurementsInput"> <input type="number" placeholder="точность измерений" id="significanceInput">
+    <button id="calculate" onclick="updateTable()">Посчитать</button>
+    <p id="table"></p>
+</body>
+</html>
