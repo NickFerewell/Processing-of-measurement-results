@@ -9,12 +9,15 @@
     <link href="style.css" rel="stylesheet" type="text/css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.2.1/math.js" integrity="sha512-47N5yVdAeXJ+9qstVMTH2Z0EpX618sjYZcswRwhpldSTD0IbW6yQPtzg4RLrPp/2+TIgEF1elT68/ZBu82nqJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    
+    <script src="text-table.js"></script>
+
     <script src="TValue.js"></script>
     <script src="main.js"></script>
 </head>
 <body>
-    <input type="text" placeholder="измерения, разделённые пробелом" id="measurementsInput"> <input type="number" placeholder="точность измерений" id="significanceInput">
+    <label for="measurementsInput">Измерения(,→.):</label><input type="text" placeholder="измерения, разделённые пробелом" id="measurementsInput">
+    <label for="significanceInput">Доверительная&nbspвероятность:</label><input type="number" placeholder="0.95" id="significanceInput">
+    <br><label for="sistematicErrorInput">Систематическая погрешность:</label><input type="number" placeholder="0.05" id="sistematicErrorInput">
     <button id="calculate" onclick="updateTable()">Посчитать</button>
     <p id="table"></p>
 </body>
